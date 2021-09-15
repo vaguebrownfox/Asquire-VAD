@@ -1,4 +1,4 @@
-addEventListener("message", function (e) {
+this.addEventListener("message", function (e) {
 	var wavPCM = new WavePCM(e["data"]["config"]);
 	wavPCM.record(e["data"]["pcmArrays"]);
 	wavPCM.requestData();
@@ -60,7 +60,9 @@ class WavePCM {
 						break;
 
 					default:
-						throw "Only 8, 16, 24 and 32 bits per sample are supported";
+						throw new Error(
+							"Only 8, 16, 24 and 32 bits per sample are supported"
+						);
 				}
 			}
 		}
@@ -97,6 +99,6 @@ class WavePCM {
 		}
 
 		postMessage(wav, [wav.buffer]);
-		close();
+		this.close();
 	}
 }
