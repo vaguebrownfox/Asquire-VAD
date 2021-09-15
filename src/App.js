@@ -6,8 +6,8 @@ import { Body } from "./components/Body";
 
 export default function App() {
 	return (
-		<Container maxWidth="sm">
-			<Box my={4}>
+		<Container maxWidth="lg">
+			<Box my={8}>
 				<Typography variant="h4" component="h1" gutterBottom>
 					Asquire VAD - Web version
 				</Typography>
