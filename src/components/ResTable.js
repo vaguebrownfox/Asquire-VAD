@@ -22,6 +22,7 @@ export default function ResTable({ rows }) {
 			<Table className={classes.table} aria-label="simple table">
 				<TableHead>
 					<TableRow>
+						<TableCell>Sl.no</TableCell>
 						<TableCell>Filename</TableCell>
 						<TableCell align="right">Stim Type</TableCell>
 						<TableCell align="right">True count</TableCell>
@@ -32,13 +33,12 @@ export default function ResTable({ rows }) {
 				<TableBody>
 					{rows.map((row) => (
 						<TableRow key={row.name}>
-							<TableCell component="th" scope="row">
-								{row.name}
-							</TableCell>
+							<TableCell scope="row">{row.idx}</TableCell>
+							<TableCell scope="row">{row.name}</TableCell>
 							<TableCell align="right">{row.type}</TableCell>
 							<TableCell align="right">{row.trueCount}</TableCell>
 							<TableCell align="right">{row.vadCount}</TableCell>
-							<TableCell align="right">{row.result}</TableCell>
+							<TableCell align="right">{row.result}%</TableCell>
 						</TableRow>
 					))}
 				</TableBody>

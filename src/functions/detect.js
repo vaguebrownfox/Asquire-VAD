@@ -7,6 +7,8 @@ var toWav = require("audiobuffer-to-wav");
 export const detectStims = async (audioUrl) => {
 	const audioBuffer = await createAudioBuffer(audioUrl);
 
+	if (!audioBuffer) return null;
+
 	let ctx = new OfflineAudioContext(
 		audioBuffer.numberOfChannels,
 		audioBuffer.length,
@@ -39,8 +41,8 @@ export const detectStims = async (audioUrl) => {
 	const res = await countStims(channel, outputAudioBuffer.sampleRate);
 	console.log("filter res count", res);
 
-	let wavop = toWav(outputAudioBuffer);
-	return { res, wavop };
+	// let wavop = toWav(outputAudioBuffer);
+	return { res, wavop: [] };
 };
 
 const createAudioBuffer = async (audioUrl) => {
