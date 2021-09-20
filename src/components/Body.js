@@ -28,8 +28,8 @@ const useStyles = makeStyles((th) => ({
 	},
 }));
 
-function createData(idx, name, type, trueCount, vadCount, result) {
-	return { idx, name, type, trueCount, vadCount, result };
+function createData(idx, name, type, trueCount, vadCount, result, audioUrl) {
+	return { idx, name, type, trueCount, vadCount, result, audioUrl };
 }
 
 export const Body = () => {
@@ -90,7 +90,8 @@ export const Body = () => {
 						fileProps.stim,
 						fileProps.cnt,
 						res.count,
-						(correctCount / (i + 1)).toFixed(2) * 100
+						(correctCount / (i + 1)).toFixed(2) * 100,
+						audioUrl
 					);
 
 					console.log(

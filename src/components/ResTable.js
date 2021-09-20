@@ -12,6 +12,9 @@ const useStyles = makeStyles({
 	table: {
 		minWidth: 650,
 	},
+	audio: {
+		transform: `scale(0.7)`,
+	},
 });
 
 export default function ResTable({ rows }) {
@@ -24,17 +27,27 @@ export default function ResTable({ rows }) {
 					<TableRow>
 						<TableCell>Sl.no</TableCell>
 						<TableCell>Filename</TableCell>
+						<TableCell align="right">Audio Url</TableCell>
 						<TableCell align="right">Stim Type</TableCell>
 						<TableCell align="right">True count</TableCell>
 						<TableCell align="right">VAD count</TableCell>
-						<TableCell align="right">Result</TableCell>
+						<TableCell align="right">Accumulated Result</TableCell>
 					</TableRow>
 				</TableHead>
+
 				<TableBody>
-					{rows.map((row) => (
+					{rows.map((row, i) => (
 						<TableRow key={row.name}>
 							<TableCell scope="row">{row.idx}</TableCell>
 							<TableCell scope="row">{row.name}</TableCell>
+							<TableCell align="right">
+								<audio
+									className={classes.audio}
+									id={`${i}_${row.name}`}
+									src={row.audioUrl}
+									controls
+								/>
+							</TableCell>
 							<TableCell align="right">{row.type}</TableCell>
 							<TableCell align="right">{row.trueCount}</TableCell>
 							<TableCell align="right">{row.vadCount}</TableCell>
